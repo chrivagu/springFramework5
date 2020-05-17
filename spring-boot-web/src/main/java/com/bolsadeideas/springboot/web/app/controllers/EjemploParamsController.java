@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,6 +23,13 @@ public class EjemploParamsController {
 		model.addAttribute("resultado", "El texto enviado es: " + texto);
 		return "params/ver";
 	}
+	
+	@GetMapping("/order/{myId}/receipts")
+	public String requestParamAndPathVariable(@RequestParam String nombreLibro, @PathVariable String myId, Model model) {
+		model.addAttribute("resultado", "El requestParam es: " + nombreLibro + " y el pathVariable "+ myId);
+		return "params/ver";
+	}
+	
 	
 	@GetMapping("/mix-params")
 	public String param(@RequestParam String saludo, @RequestParam Integer numero, Model model) {
