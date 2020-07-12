@@ -18,6 +18,7 @@ public class FormController {
 
 	@GetMapping("/form")
 	public String form(Model model) {
+		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("titulo", "Formulario usuarios");
 		return "form";
 	}
@@ -36,7 +37,7 @@ public class FormController {
 			model.addAttribute("error", errores);
 			return "form";
 		}
-
+		
 		model.addAttribute("usuario", usuario);
 
 		return "resultado";
